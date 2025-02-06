@@ -156,10 +156,16 @@ section {
 .home-img .img-box::after {
     content: '';
     position: absolute;
-    width: 50rem;
-    height: 50rem;
-    background: conic-gradient(transparent,transparent,transparent, var(--main-color));
+    width: 60rem;
+    height: 60rem;
+    background: conic-gradient(transparent, transparent, var(--main-color), transparent, transparent);
+    border-radius: 50%;
     animation: rotate-border 10s linear infinite;
+    filter: blur(5px);
+}
+
+.home-img .img-box::after {
+    animation-duration: 12s;
 }
 
 @keyframes rotate-border {
