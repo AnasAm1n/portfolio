@@ -365,3 +365,16 @@ overflow: hidden;
     border-color: var(--main-color);
     color: var(--main-color);
 }
+
+.resume-detail {
+    display: none;
+}
+
+.resume-detail.active {
+    display: block;
+}
+
+.resume-box .heading {
+    font-size: 5rem;
+    text-align: left;
+}
