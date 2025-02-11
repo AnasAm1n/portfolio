@@ -39,6 +39,21 @@ body {
         justify-content: space-between;
         align-items: center;
         z-index: 100;
+        visibility: hidden;
+        opacity: 0;
+}
+
+header.active {
+    animation: show-header 1.5s linear forwards;
+    animation-delay: 1.2s;
+
+}
+
+@keyframes show-header {
+    100% {
+        visibility: visible;
+        opacity: 1;
+    }
 }
 
 .logo {
@@ -64,21 +79,66 @@ nav a:hover,
     display: none;
 }
 
+.bars-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.bars-box .bar {
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    animation: hide-bars .5s ease-in-out both;
+    animation-delay: calc(.1s * var(--i));
+}
+
+@keyframes hide-bars {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100);
+    }
+}
+
+.bars-box.active .bar {
+    animation: show-bars .5s ease-in-out both;
+    animation-delay: calc(.1s * var(--i));
+
+}
+
+@keyframes show-bars {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
 section {
     position: absolute;
     width: 100%;
     height: 100%;
     padding: 10rem 9% 2rem;
-    background: var(--bg-color);
     visibility: hidden;
     opacity: 0;
     overflow: hidden;
 }
 
 section.active {
-    visibility: visible;
-    opacity: 1;
-    overflow: auto;
+   animation: show-content 1.5s linear forwards;
+   animation-delay: 1.6s;
+}
+
+@keyframes show-content {
+    100% {
+        visibility: visible;
+        opacity: 1;
+        overflow: auto;
+    }
 }
 
 .home {
@@ -652,7 +712,7 @@ overflow: hidden;
 
 .contact-container {
     display: grid;
-    grid-template-columns: 1.5fr 1.3fr;
+    grid-template-columns: 1fr 1.3fr;
     gap: 3rem;
 }
 
@@ -665,27 +725,30 @@ overflow: hidden;
 }
 
 .contact-box p {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+
 }
 
 .contact-box .desc {
-    margin: 1.5rem 0 2.5rem;
+   margin: 1.5rem 0 2.5rem;
 }
 
 .contact-box .contact-detail {
     display: flex;
     align-items: center;
-    margin: 2rem 0;
+    margin: 2rem;
+    margin-left: 0rem;
 }
 
 .contact-detail i {
     display: inline-flex;
     background: var(--second-bg-color);
     color: var(--main-color);
-    font: 3rem;
+    font-size: 3rem;
     padding: 1.2rem;
     border-radius: .6rem;
     margin-right: 1.5rem;
+
 }
 
 .contact-detail .detail p:first-child {
@@ -736,4 +799,10 @@ overflow: hidden;
     cursor: pointer;
 }
 
-
+/* Breakpoints */
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 55%;
+    }
+    
+}
